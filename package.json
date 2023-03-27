@@ -1,0 +1,20 @@
+{
+  "name": "the-contact-book",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "node",
+    "expressjs",
+    "REST"
+  ],
+  "author": "Manu Coutinho",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ManuCoutinho/the-contact-book"
+  },
+  "license": "MIT"
+}
