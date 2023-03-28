@@ -15,8 +15,19 @@ class ContactController {
     return response.json(contact)
   }
 
-  store () {
-    // todo: create a new registry
+  async store (request, response) {
+    const { name, phone, email, category_id } = request.body
+
+    const contactExists = await ContactsRepository.findByEmail(email)
+
+    if (contactExists) return response.status(409).json({ error: 'This e-mail already been taken!' })
+
+    const contact = await ContactsRepository.create({
+
+      name, phone, email, category_id
+    })
+
+    return response.json(contact)
   }
 
   update () {

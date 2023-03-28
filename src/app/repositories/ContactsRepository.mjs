@@ -29,6 +29,26 @@ class ContactsRepository {
       resolve()
     })
   }
+
+  findByEmail (email) {
+    return new Promise((resolve) => resolve(
+      contacts.find((contact) => contact.email === email)
+    ))
+  }
+
+  create ({ name, phone, email, category_id }) {
+    return new Promise(resolve => {
+      const newContact = {
+        id: randomUUID(),
+        name,
+        phone,
+        email,
+        category_id
+      }
+      contacts.push(newContact)
+      resolve(newContact)
+    })
+  }
 }
 
 export default new ContactsRepository()
