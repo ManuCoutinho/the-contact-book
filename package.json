@@ -9,9 +9,9 @@
     "npm": "^8.11.0"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "npx nodemon src/index.js",
-    "lint": "eslint --ext .ts,.tsx src",
+    "start": "node src/index.mjs",
+    "dev": "npx nodemon src/index.mjs",
+    "lint": "eslint --ext .js, .mjs src",
     "prepare": "husky install"
   },
   "keywords": [

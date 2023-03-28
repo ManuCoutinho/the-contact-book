@@ -1,0 +1,5 @@
+- repository pattern: Layer de abstração de acesso ao Data source
+- Controller = regra de negócio
+- Singleton pattern -> importa sempre a mesma instancia
+- Request -> Controller -> response - normal life cycle
+- request -> middleware -> controller -> response
