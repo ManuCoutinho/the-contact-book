@@ -8,7 +8,7 @@ class ContactController {
 
   async show (request, response) {
     const { id } = request.params
-    const contact = await ContactController.findById(id)
+    const contact = await ContactsRepository.findById(id)
 
     if (!contact) return response.status(404).json({ error: 'User not found' })
 
@@ -18,9 +18,11 @@ class ContactController {
   async store (request, response) {
     const { name, phone, email, category_id } = request.body
 
+    if (!name) return response.status(400).json({ error: 'Name is required' })
+
     const contactExists = await ContactsRepository.findByEmail(email)
 
-    if (contactExists) return response.status(409).json({ error: 'This e-mail already been taken!' })
+    if (contactExists) return response.status(409).json({ error: 'This e-mail already in use' })
 
     const contact = await ContactsRepository.create({
 
@@ -30,14 +32,26 @@ class ContactController {
     return response.json(contact)
   }
 
-  update () {
-    // todo: edit a registry
+  async update (request, response) {
+    const { id } = request.params
+    const { name, phone, email, category_id } = request.body
+    const contactExists = await ContactsRepository.findById(id)
+
+    if (!contactExists) return response.status(404).json({ error: 'User not found' })
+    if (!name) return response.status(400).json({ error: 'Name is required' })
+    const contactByEmailExists = await ContactsRepository.findByEmail(email)
+    if (contactByEmailExists && contactByEmailExists.id !== id) {
+      return response.status(400).json({ error: 'This e-mail is already in use' })
+    }
+    const contact = await ContactsRepository.update(id, { name, phone, email, category_id })
+
+    return response.status(200).json(contact)
   }
 
   async delete (request, response) {
     const { id } = request.params
 
-    const contact = await ContactController.findById(id)
+    const contact = await ContactsRepository.findById(id)
 
     if (!contact) return response.status(404).json({ error: 'User not found' })
 

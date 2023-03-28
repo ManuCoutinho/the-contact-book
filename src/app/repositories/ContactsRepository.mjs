@@ -1,3 +1,4 @@
+'use-strict'
 import crypto from 'node:crypto'
 
 const { randomUUID } = crypto
@@ -8,6 +9,13 @@ let contacts = [
     name: 'Random Name',
     email: 'email@email.com',
     phone: '34566-0000',
+    category_id: randomUUID()
+  },
+  {
+    id: randomUUID(),
+    name: 'Random Name 2',
+    email: 'email2@email.com',
+    phone: '34566-0002',
     category_id: randomUUID()
   }
 ]
@@ -47,6 +55,20 @@ class ContactsRepository {
       }
       contacts.push(newContact)
       resolve(newContact)
+    })
+  }
+
+  update (id, { name, phone, email, category_id }) {
+    return new Promise(resolve => {
+      const updatedContact = {
+        id,
+        name,
+        phone,
+        email,
+        category_id
+      }
+      contacts = contacts?.map((contact) => contact.id === id ? updatedContact : contact)
+      resolve(updatedContact)
     })
   }
 }
