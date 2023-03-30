@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "api for the contract book app",
   "main": "index.js",
-  "type": "module",
   "engines": {
     "node": "^16.15.1",
     "npm": "^8.11.0"

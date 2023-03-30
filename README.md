@@ -78,12 +78,12 @@ $ git clone https://github.com/ManuCoutinho/the-contact-book
 $ cd the-contact-book
 
 # Install dependencies
-$ yarn
+$ npm install
 
 # Run the project
-$ yarn start
+$ npm start
 
-# The server will initialize in the <http://localhost:3000>
+# The server will initialize in the <http://localhost:3333>
 ```
 
 ## :memo: License
