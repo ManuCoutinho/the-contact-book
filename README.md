@@ -12,7 +12,7 @@
 
 Este projeto é uma simples API para cadastro de contados, feita em Javascript (Node) utilizando Express.js e Postgres como banco de dados, qual conta com CRUD completo.
 
-Utilizando o Docker, o bando de dados pode ser montado localmente sob a interface do PGAdmin4 e a imagem com a tag `latest` do Postgres.
+Utilizando o Docker, o banco de dados pode ser montado localmente sob a interface do PGAdmin4 e a imagem com a tag `latest` do Postgres.
 
 ## :white_check_mark: Requerimentos
 
