@@ -1,0 +1,59 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-tcb
+    hostname: postgres
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    volumes:
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - db-data:/var/lib/postgres/data
+    ports:
+      - 15432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-tcb
+    depends_on:
+      - postgres
+    ports:
+      - "5555:80"
+    env_file:
+      - .env
+    networks:
+      - postgres-network
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    restart: unless-stopped
+
+  app:
+    stdin_open: true
+    container_name: app-tcb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    networks:
+      - postgres-network
+    ports:
+      - 3333:3333
+    volumes:
+      - app-data:/var/lib/app-data
+    restart: always
+
+
+volumes:
+  pgadmin-data:
+  app-data:
+  db-data:
+    driver: local
+
+networks:
+  postgres-network:
+    driver: bridge

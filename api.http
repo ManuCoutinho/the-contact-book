@@ -1,0 +1,39 @@
+
+###
+POST http://localhost:3333/categories HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "github"
+}
+
+###
+GET http://localhost:3333/categories HTTP/1.1
+
+###
+POST http://localhost:3333/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "string",
+  "phone": "string",
+  "email": "string",
+  "category_id": "string",
+}
+
+###
+GET http://localhost:3333/contacts HTTP/1.1
+
+###
+DELETE http://localhost:3333/contacts/{{ id }} HTTP/1.1
+
+###
+PUT http://localhost:3333/contacts/{{ id }} HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "string",
+  "phone": "string",
+  "email": "string",
+  "category_id": "string",
+}
