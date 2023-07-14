@@ -58,7 +58,7 @@ PUT /contacts/:id
 
 ```
 
-\_Veja mais detalhes no arquivo [api.http](api.http)
+_Veja mais detalhes no arquivo [api.http](api.http)_
 
 ## :white_check_mark: Requerimentos
 
