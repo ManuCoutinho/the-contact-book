@@ -1,7 +1,7 @@
 {
   "name": "the-contact-book",
   "version": "0.0.1",
-  "description": "api for the contract book app",
+  "description": "api for the contact book app",
   "main": "index.js",
   "engines": {
     "node": "^18.16.1",
